@@ -1,0 +1,16 @@
+reta
+50,300,150,300
+poligono
+100,50,100,200,200,150
+arco
+300,300,50
+bezier
+200,100,400,100,200,20
+texto
+Lema da Vida:
+reta
+200,300,50,50
+texto
+Bóra Madrugar!
+texto
+Se não vai reprovar
