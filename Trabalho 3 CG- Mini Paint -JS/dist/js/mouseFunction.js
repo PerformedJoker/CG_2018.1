@@ -24,7 +24,7 @@ document.addEventListener("keydown", function(evt)//end area
 		setAllFalse();
 		drawCall();
 	}
-	if(evt.keyCode == 46) // delete
+	if(evt.keyCode == 8 || evt.keyCode == 46 ) //  backspace /\ 46 delete
 	{
 		if(pick != null)
 		{
@@ -47,8 +47,9 @@ canvas.addEventListener('mousemove', function(evt)
 	pos = getMousePos(canvas, evt);
 	if(scale == 2 && pick != null)
 	{
-		//context.fillStyle = "rgb(255,255,255)";
-		//context.fillRect(0, 0, canvas.width, canvas.height);
+		context.fillStyle = "rgb(255,255,255)";
+		context.fillRect(0, 0, canvas.width, canvas.height);
+		desenhaGrid();
 
 		if(drawBuffer.length > 0){
 			for (var i = 0; i < drawBuffer.length; i++){
@@ -115,6 +116,13 @@ canvas.addEventListener('mousemove', function(evt)
 		context.lineTo(pos.x,pos.y);
 		context.strokeStyle = getColor();
 		context.stroke();
+		if ($("#tD").is(":checked")){
+		console.log("Modo Tô Doidão Ativado");
+		drawBuffer.push(new Line (tmpPt1,new Point(pos.x,pos.y)));
+		//alert("Entrou no checado");
+	}
+		
+		
 	}
 
 	//Ruber Banding Arc
@@ -435,3 +443,8 @@ canvas.addEventListener('mousedown', function(evt)
 		move = true;
 	}
 }, false);
+
+
+
+
+

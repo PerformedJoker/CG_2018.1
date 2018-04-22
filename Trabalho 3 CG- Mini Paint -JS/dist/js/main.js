@@ -8,19 +8,36 @@ var drawArc = 0;
 var drawBezier = 0;
 var drawArea = 0;
 var tol = 10;
+var linhaTD = 0;
+	
+
+
 
 
 drawCall = function ()
 {
-	
+	// var td_checkbox = ;
+		//console.log(document.getElementById('TD').checked);
+	if ($("#tD").is(":checked")){
+	console.log("Modo Tô Doidão Ativado");
+
+		//alert("Entrou no checado");
+	}else{
+		// context.fillRect(0, 0, canvas.width, canvas.height);
+		
 	context.fillStyle = "rgb(255,255,255)";
 	context.fillRect(0, 0, canvas.width, canvas.height);
 	desenhaGrid();
+		// alert("Não consegiu passar, mas entrou na funcao");
+	}
+
+	console.log("o tamanho do drawBuffer.length é :"+drawBuffer.length);
 	if(drawBuffer.length > 0){
 		for (var i = 0; i < drawBuffer.length; i++){
 			context.setLineDash([0,0]);
 			//if(scale != 2 && drawBuffer[i] != pick){
 				drawBuffer[i].draw(context);
+				
 			//}
 		}
 	}
@@ -61,7 +78,9 @@ generateNewLine = function()
 	if(drawLine == 0){
 		setAllFalse();
 		drawLine = 1;
+		linhaTD = 0;
 	}
+	
 }
 
 generateNewArc = function()

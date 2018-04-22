@@ -11,6 +11,12 @@ Line.prototype.draw = function(context){
 	context.lineTo(this.endPt.x,this.endPt.y);
 	context.strokeStyle = this.color;
 	context.stroke();
+	
+	if ($("#tD").is(":checked") && drawLine == '1'){
+	console.log("Modo Tô Doidão Ativado em linha");
+
+		//alert("Entrou no checado");
+	}
 }
 
 Line.prototype.pick = function(pos){
@@ -71,6 +77,7 @@ Line.prototype.highlight = function(context){
 		endY = this.startPt.y;
 	}
 
+
 	context.rect(startX,startY,endX-startX,endY-startY);
 	context.strokeStyle = "rgb(0,0,0)"
 	context.setLineDash([1,1]); 
@@ -121,8 +128,7 @@ Line.prototype.rotate = function(sin,cos,pt){
 		ptList[i].y = ((sin*ptList[i].x) + (cos*ptList[i].y));
 		ptList[i].x += CoM.x
 		ptList[i].y += CoM.y
-	}
-	
+	}	
 }
 
 Line.prototype.drawRotate = function(sin,cos,pt){
@@ -146,9 +152,9 @@ Line.prototype.drawRotate = function(sin,cos,pt){
 
 Line.prototype.mirrorX = function (){
 	this.startPt.x = 1
-
 }
 
 Line.prototype.getCoM = function(){
 	return new Point((this.endPt.x + this.startPt.x)/2,  (this.endPt.y + this.startPt.y)/2)
+	
 }
